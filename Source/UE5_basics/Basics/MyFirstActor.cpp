@@ -27,6 +27,25 @@ void AMyFirstActor::BeginPlay()
 	
 	OnActorBeginOverlap.AddDynamic(this, &AMyFirstActor::OnBeginOverlap);
 	OnActorEndOverlap.AddDynamic(this, &AMyFirstActor::OnEndOverlap);
+	
+	if (BoxComponent)
+	{
+		BoxComponent -> UpdateOverlaps();
+		
+		TArray<AActor*> OverlappingActors;
+		
+		BoxComponent -> GetOverlappingActors(OverlappingActors, AActor::StaticClass());
+		
+		for (AActor* Actor : OverlappingActors)
+		{
+			if (Actor)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Attore in overlap all'avvio: %s"), *Actor->GetName());
+			}
+		}
+		
+	}
+	
 
 	// Bind example
 	/*
