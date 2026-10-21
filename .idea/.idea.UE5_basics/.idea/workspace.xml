@@ -11,15 +11,25 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="aeaeb703-cd09-4f17-afcf-45ecd4c3d1b9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Private/Lezione_2/TP_TestCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Private/Lezione_2/TP_TestCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Public/Lezione_2/TP_TestCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Public/Lezione_2/TP_TestCharacter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -301,7 +311,7 @@
       <workItem from="1736517991078" duration="1544000" />
       <workItem from="1737623617941" duration="8714000" />
       <workItem from="1737652652001" duration="604000" />
-      <workItem from="1791974741609" duration="442000" />
+      <workItem from="1791974741609" duration="1412000" />
     </task>
     <servers />
   </component>
