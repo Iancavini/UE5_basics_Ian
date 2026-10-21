@@ -7,7 +7,6 @@
 UHealthComponent_Test::UHealthComponent_Test()
 {
 	PrimaryComponentTick.bCanEverTick = true;
-
 }
 
 void UHealthComponent_Test::GetDamage(int Amount)
@@ -16,6 +15,20 @@ void UHealthComponent_Test::GetDamage(int Amount)
 	{
 		const auto ActualDamage = FMath::Abs(Amount);
 		currentHealth = FMath::Clamp(currentHealth - ActualDamage, 0, MaxHealth);
+		
+		// Aggiorna il timestamp dell'ultimo danno ricevuto
+		if (UWorld* World = GetWorld())
+		{
+			lastDamageTime = World->GetTimeSeconds();
+		}
+	}
+}
+
+void UHealthComponent_Test::Heal(int Amount)
+{
+	if (Amount > 0 && currentHealth < MaxHealth && currentHealth > 0)
+	{
+		currentHealth = FMath::Clamp(currentHealth + Amount, 0, MaxHealth);
 	}
 }
 
@@ -26,6 +39,10 @@ void UHealthComponent_Test::BeginPlay()
 	
 	currentHealth = MaxHealth;
 	
+	if (UWorld* World = GetWorld())
+	{
+		lastDamageTime = World->GetTimeSeconds();
+	}
 }
 
 
@@ -34,6 +51,21 @@ void UHealthComponent_Test::TickComponent(float DeltaTime, ELevelTick TickType, 
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	// Gestione dell'Auto-Recovery
+	if (bEnableAutoRecovery && currentHealth < MaxHealth && currentHealth > 0)
+	{
+		if (UWorld* World = GetWorld())
+		{
+			float CurrentTime = World->GetTimeSeconds();
+			
+			// Controlla se è passato abbastanza tempo dall'ultimo colpo subito
+			if (CurrentTime - lastDamageTime >= TimeWithoutDamageToRecover)
+			{
+				// Recupero incrementale basato sul DeltaTime per renderlo fluido
+				float RecoveryThisFrame = HealthRecoveryPerSecond * DeltaTime;
+				currentHealth = FMath::Clamp(FMath::RoundToInt(currentHealth + RecoveryThisFrame), 0, MaxHealth);
+			}
+		}
+	}
 }
 
