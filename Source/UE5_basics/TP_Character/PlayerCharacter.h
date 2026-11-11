@@ -23,6 +23,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Gameplay")
 	void IncrementaContatore();
 	
+	// Variabile per verificare se il giocatore possiede la palla
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	bool HaLaPalla = false;
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

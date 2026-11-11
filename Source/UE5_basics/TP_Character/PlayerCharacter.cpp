@@ -33,6 +33,15 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 // funzione che incrementa il contatore
 void APlayerCharacter::IncrementaContatore()
 {
-	Contatore++;
-	UE_LOG(LogTemp, Warning, TEXT("Contatore aggiornato dal Blueprint: %d"), Contatore);
+	// L'attore incrementa il contatore SOLO se il player ha la palla
+	if (HaLaPalla)
+	{
+		Contatore++;
+		UE_LOG(LogTemp, Warning, TEXT("Contatore aggiornato! Nuovo valore: %d"), Contatore);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("Il Player non ha la palla. Contatore non incrementato."));
+	}
 }
+
